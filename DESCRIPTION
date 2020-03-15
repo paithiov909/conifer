@@ -1,0 +1,22 @@
+Package: conifer
+Type: Package
+Title: An R Client of COTOHA API for Developers
+Version: 0.0.1.0900
+Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
+Author: paithiov909
+Maintainer: Kato Akiru <paithiov909@gmail.com>
+Description: R client of COTOHA API for Developers.
+Depends:
+    R (>= 3.2.0)
+License: MIT + file LICENSE
+URL: https://github.com/paithiov909/conifer
+BugReports: https://github.com/paithiov909/conifer/issues 
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    R6,
+    V8,
+    tibble,
+    httr,
+    dplyr
+RoxygenNote: 6.1.1

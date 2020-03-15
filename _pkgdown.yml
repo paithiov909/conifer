@@ -1,0 +1,46 @@
+destination: docs
+
+reference:
+    - title: "{conifer} package"
+      contents: conifer
+    - title: "Using COTOHA API"
+      contents:
+        - getAccessToken
+        - cotoha
+        - parse
+        - ne
+        - coreference
+        - keyword
+        - similarity
+        - sentence_type
+        - user_attribute
+        - remove_filler
+        - detect_misrecognition
+        - sentiment
+    - title: "elasticlunr.js on V8"
+      contents:
+        - elasticlunr
+        - add
+        - remove
+        - update
+        - search
+    - title: "NEologd-styled normalizer on V8"
+      contents:
+        - normalize
+    - title: "Planeshifter/text-miner on V8"
+      contents:
+        - text_miner
+        - addDoc
+        - addDocs
+        - clean
+        - removeInterpunctuation
+        - removeNewLines
+        - removeWords
+        - removeDigits
+        - removeInvalidCharacters
+        - stem
+        - toLower
+        - toUpper
+        - trim
+        - documentTermMatrix
+        - expandContractions
