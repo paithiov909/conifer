@@ -2,7 +2,7 @@
 % Please edit documentation in R/reference.R
 \name{similarity}
 \alias{similarity}
-\title{Calculating Similality between Sentences}
+\title{Calculating Similarity between Sentences}
 \arguments{
 \item{s1}{string.}
 
@@ -14,5 +14,5 @@
 list.
 }
 \description{
-Calculating Similality between Sentences
+Calculating Similarity between Sentences
 }

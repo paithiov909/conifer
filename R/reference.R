@@ -41,7 +41,7 @@ NULL
 #' @name keyword
 NULL
 
-#' Calculating Similality between Sentences
+#' Calculating Similarity between Sentences
 #'
 #' @param s1 string.
 #' @param s2 string.

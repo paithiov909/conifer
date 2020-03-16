@@ -2,7 +2,7 @@
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/conifer)](#) [![GitHub license](https://img.shields.io/github/license/paithiov909/conifer.svg)](https://github.com/paithiov909/conifer/blob/master/LICENSE) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-> R client of [COTOHA](https://api.ce-cotoha.com/contents/index.html) API for Developers
+> R client of [COTOHA API](https://api.ce-cotoha.com/contents/index.html) for Developers (unofficial)
 
 ## Installation
 

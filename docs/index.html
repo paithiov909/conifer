@@ -87,7 +87,7 @@
 <a href="#conifer" class="anchor"></a>conifer</h1></div>
 
 <blockquote>
-<p>R client of <a href="https://api.ce-cotoha.com/contents/index.html">COTOHA</a> API for Developers</p>
+<p>R client of <a href="https://api.ce-cotoha.com/contents/index.html">COTOHA API</a> for Developers (unofficial)</p>
 </blockquote>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -101,14 +101,14 @@
 <h3 class="hasAnchor">
 <a href="#getting-ready-to-use-client" class="anchor"></a>Getting ready to use client</h3>
 <p>First of all, you should set <code>COTOHA_ID</code> and <code>COTOHA_SECRET</code> as environment vars. Run <code><a href="https://www.rdocumentation.org/packages/base/topics/Sys.setenv">Sys.setenv(COTOHA_ID = "Your Client ID")</a></code> and <code><a href="https://www.rdocumentation.org/packages/base/topics/Sys.setenv">Sys.setenv(COTOHA_SECRET = "Your Client secret")</a></code>, then try snippets below.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">token &lt;-<span class="st"> </span>conifer<span class="op">::</span><span class="kw">getAccessToken</span>(<span class="st">"Access Token Publish URL comes here."</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2">client &lt;-<span class="st"> </span>conifer<span class="op">::</span><span class="kw">cotoha</span>(token)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">token &lt;-<span class="st"> </span>conifer<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/conifer/topics/getAccessToken">getAccessToken</a></span>(<span class="st">"Access Token Publish URL comes here."</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2">client &lt;-<span class="st"> </span>conifer<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/conifer/topics/cotoha">cotoha</a></span>(token)</a></code></pre></div>
 </div>
 <div id="calling-api" class="section level3">
 <h3 class="hasAnchor">
 <a href="#calling-api" class="anchor"></a>Calling API</h3>
 <p>See the <a href="https://paithiov909.github.io/conifer/reference/index.html#section-using-cotoha-api">reference</a> for more info.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">client<span class="op">$</span><span class="kw">keyword</span>(<span class="st">"翔んで埼玉 お前はまだグンマを知らない"</span>)</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">client<span class="op">$</span><span class="kw"><a href="reference/keyword.html">keyword</a></span>(<span class="st">"翔んで埼玉 お前はまだグンマを知らない"</span>)</a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; [[1]]$form</span></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt; [1] "お前"</span></a>
