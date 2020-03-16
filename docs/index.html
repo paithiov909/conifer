@@ -87,12 +87,43 @@
 <a href="#conifer" class="anchor"></a>conifer</h1></div>
 
 <blockquote>
-<p>R client of COTOHA API for Developers</p>
+<p>R client of <a href="https://api.ce-cotoha.com/contents/index.html">COTOHA</a> API for Developers</p>
 </blockquote>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"paithiov909/conifer"</span>)</a></code></pre></div>
+</div>
+<div id="usage-of-cotoha-api-client" class="section level2">
+<h2 class="hasAnchor">
+<a href="#usage-of-cotoha-api-client" class="anchor"></a>Usage of COTOHA API client</h2>
+<div id="getting-ready-to-use-client" class="section level3">
+<h3 class="hasAnchor">
+<a href="#getting-ready-to-use-client" class="anchor"></a>Getting ready to use client</h3>
+<p>First of all, you should set <code>COTOHA_ID</code> and <code>COTOHA_SECRET</code> as environment vars. Run <code><a href="https://www.rdocumentation.org/packages/base/topics/Sys.setenv">Sys.setenv(COTOHA_ID = "Your Client ID")</a></code> and <code><a href="https://www.rdocumentation.org/packages/base/topics/Sys.setenv">Sys.setenv(COTOHA_SECRET = "Your Client secret")</a></code>, then try snippets below.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">token &lt;-<span class="st"> </span>conifer<span class="op">::</span><span class="kw">getAccessToken</span>(<span class="st">"Access Token Publish URL comes here."</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2">client &lt;-<span class="st"> </span>conifer<span class="op">::</span><span class="kw">cotoha</span>(token)</a></code></pre></div>
+</div>
+<div id="calling-api" class="section level3">
+<h3 class="hasAnchor">
+<a href="#calling-api" class="anchor"></a>Calling API</h3>
+<p>See the <a href="https://paithiov909.github.io/conifer/reference/index.html#section-using-cotoha-api">reference</a> for more info.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">client<span class="op">$</span><span class="kw">keyword</span>(<span class="st">"翔んで埼玉 お前はまだグンマを知らない"</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; [[1]]$form</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt; [1] "お前"</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; [[1]]$score</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt; [1] 22.838</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt; [[2]]$form</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt; [1] "グンマ"</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt; [[2]]$score</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; [1] 13.0929</span></a></code></pre></div>
+</div>
 </div>
 <div id="license" class="section level2">
 <h2 class="hasAnchor">
