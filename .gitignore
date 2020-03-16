@@ -38,4 +38,3 @@ rsconnect/
 *.log
 
 inst/node_modules/
-inst/doc

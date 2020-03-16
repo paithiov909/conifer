@@ -21,8 +21,9 @@ NULL
 
 #' Reference Resolution
 #'
-#' @param sentence string.
+#' @param document character.
 #' @param type string. Select `default` or `kuzure`.
+#' @param do_segment boolean. Default is false.
 #'
 #' @return list.
 #'
@@ -31,8 +32,9 @@ NULL
 
 #' Keyword Extraction
 #'
-#' @param sentence string.
+#' @param documetn character.
 #' @param type string. Select `default` or `kuzure`.
+#' @param do_segment boolean. Default is false.
 #'
 #' @return list.
 #'
@@ -52,9 +54,8 @@ NULL
 
 #' Linguistic Modality Detection
 #'
-#' @param document character.
+#' @param sentence string.
 #' @param type string. Select `default` or `kuzure`.
-#' @param do_segment boolean. Default is false.
 #'
 #' @name sentence_type
 NULL

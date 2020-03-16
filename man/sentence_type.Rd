@@ -4,11 +4,9 @@
 \alias{sentence_type}
 \title{Linguistic Modality Detection}
 \arguments{
-\item{document}{character.}
+\item{sentence}{string.}
 
 \item{type}{string. Select `default` or `kuzure`.}
-
-\item{do_segment}{boolean. Default is false.}
 }
 \description{
 Linguistic Modality Detection

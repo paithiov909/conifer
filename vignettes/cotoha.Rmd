@@ -1,0 +1,128 @@
+---
+title: "Using COTOHA API"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using COTOHA API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+if (!require(conifer)) {
+  devtools::load_all()
+}
+library(tidyverse)
+```
+
+## Usage of COTOHA API client
+
+### Getting ready to use client
+
+First of all, you should set `COTOHA_ID` and `COTOHA_SECRET` as environment vars. Run `Sys.setenv(COTOHA_ID = "Your Client ID")` and `Sys.setenv(COTOHA_SECRET = "Your Client secret")`, then try snippets below.
+
+
+```{r}
+# Never forget to set `Access Token Publish URL`
+PUB_URL <- Sys.getenv("PUB_URL")
+my_token <- conifer::getAccessToken(PUB_URL)
+client <- conifer::cotoha(my_token)
+
+data(yamanashi)
+```
+
+### Parsing dependency structure
+
+```{r}
+res <- client$parse(yamanashi[13])
+res %>% purrr::map_dfr(function(chunk){
+    tokens <- purrr::map_dfr(chunk$tokens,
+        ~ tibble::tibble(
+          token_id = .$id,
+          form = .$form,
+          pos = .$pos
+        )
+    )
+    chunk_info <- tibble::tibble(
+      chunk_id = rep(chunk$chunk_info$id, nrow(tokens)),
+      head = rep(chunk$chunk_info$head, nrow(tokens)),
+      dep = rep(chunk$chunk_info$dep, nrow(tokens)),
+      chunk_head = rep(chunk$chunk_info$head, nrow(tokens)),
+      chunk_func = rep(chunk$chunk_info$chunk_func, nrow(tokens)),
+    )
+    return(
+      bind_cols(chunk_info, tokens)
+    )
+})
+```
+
+### Named entity extraction
+
+```{r}
+print(yamanashi[68])
+client$ne(yamanashi[68])
+```
+
+### Reference resolution
+
+```{r}
+res <- client$coreference("太郎は友人です。彼は焼き肉を食べた。")
+res$coreference
+```
+
+### Keyword extraction
+
+```{r}
+print(yamanashi[57])
+res <- client$keyword(yamanashi[57])
+res
+```
+
+### Calculating similality between sentences
+
+```{r}
+print(c(yamanashi[11], yamanashi[12]))
+client$similarity(yamanashi[11], yamanashi[12])
+```
+
+### Linguistic modality detection
+
+```{r}
+print(c(yamanashi[12], yamanashi[13]))
+client$sentence_type(yamanashi[12])
+client$sentence_type(yamanashi[13])
+```
+
+### Speaker's characteristics recognition
+
+```{r}
+print(c(yamanashi[29], yamanashi[40]))
+client$user_attribute(yamanashi[29])
+client$user_attribute(yamanashi[40])
+```
+
+### Removing fillers of sentence
+
+```{r}
+client$remove_filler("えーーっと、あの、今日の打ち合わせでしたっけ。すみません、ちょっと、急用が入ってしまって。")
+```
+
+### Detecting misrecognition of sentence
+
+```{r}
+client$detect_misrecognition("温泉認識は誤りを起こす")
+```
+
+### Sentiment analysis
+
+```{r}
+print(c(yamanashi[49], yamanashi[50]))
+client$sentiment(yamanashi[49])
+client$sentiment(yamanashi[50])
+```

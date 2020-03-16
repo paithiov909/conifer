@@ -44,3 +44,6 @@ reference:
         - trim
         - documentTermMatrix
         - expandContractions
+    - title: "Dataset"
+      contents:
+        - yamanashi

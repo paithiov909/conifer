@@ -10,10 +10,6 @@
 remotes::install_github("paithiov909/conifer")
 ```
 
-## Usage
-
-comming soon
-
 ## License
 
 Copyright (c) 2020 Kato Akiru

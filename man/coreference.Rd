@@ -4,9 +4,11 @@
 \alias{coreference}
 \title{Reference Resolution}
 \arguments{
-\item{sentence}{string.}
+\item{document}{character.}
 
 \item{type}{string. Select `default` or `kuzure`.}
+
+\item{do_segment}{boolean. Default is false.}
 }
 \value{
 list.

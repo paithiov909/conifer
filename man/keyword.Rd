@@ -4,9 +4,11 @@
 \alias{keyword}
 \title{Keyword Extraction}
 \arguments{
-\item{sentence}{string.}
+\item{documetn}{character.}
 
 \item{type}{string. Select `default` or `kuzure`.}
+
+\item{do_segment}{boolean. Default is false.}
 }
 \value{
 list.

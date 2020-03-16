@@ -27,30 +27,64 @@ Client <- R6::R6Class("CotohaClient",
                       sentence,
                       type)
     },
-    coreference = function(sentence, type = c("default", "kuzure")) {
-      private$request(private$getEndpoint("coreference"),
-                      sentence,
-                      type)
+    coreference = function(document, type = c("default", "kuzure"), do_segment = FALSE) {
+      stopifnot(typeof(document) == "character")
+      body <- list(
+        document = paste(document),
+        type = type[1],
+        do_segment = do_segment
+      )
+      res <- httr::POST(
+        private$getEndpoint("coreference"),
+        body = body,
+        encode = "json",
+        content_type = "application/json;charset=UTF-8",
+        httr::add_headers(Authorization = paste("Bearer", self$config$access_token))
+      )
+      content <- httr::content(res)
+      if (res$status_code == 200) {
+        return(content$result)
+      } else {
+        message(content$message)
+        return(NULL)
+      }
     },
-    keyword = function(sentence, type = c("default", "kuzure")) {
-      private$request(private$getEndpoint("keyword"),
-                      sentence,
-                      type)
+    keyword = function(document, type = c("default", "kuzure"), do_segment = FALSE, max_keyword_num = 5L) {
+      stopifnot(typeof(document) == "character")
+      body <- list(
+        document = paste(document),
+        type = type[1],
+        do_segment = do_segment,
+        max_keyword_num = max_keyword_num
+      )
+      res <- httr::POST(
+        private$getEndpoint("keyword"),
+        body = body,
+        encode = "json",
+        content_type = "application/json;charset=UTF-8",
+        httr::add_headers(Authorization = paste("Bearer", self$config$access_token))
+      )
+      content <- httr::content(res)
+      if (res$status_code == 200) {
+        return(content$result)
+      } else {
+        message(content$message)
+        return(NULL)
+      }
     },
     similarity = function(s1, s2, type = c("default", "kuzure")) {
       stopifnot(typeof(s1) == "character", typeof(s2) == "character")
       body <- list(
         s1 = paste(s1, collapse = " "),
         s2 = paste(s2, collapse = " "),
-        type = type
+        type = type[1]
       )
       res <- httr::POST(
         private$getEndpoint("similarity"),
         body = body,
         encode = "json",
         content_type = "application/json;charset=UTF-8",
-        httr::add_headers(Authorization = paste("Bearer", self$config$access_token)),
-        httr::verbose()
+        httr::add_headers(Authorization = paste("Bearer", self$config$access_token))
       )
       content <- httr::content(res)
       if (res$status_code == 200) {
@@ -60,33 +94,14 @@ Client <- R6::R6Class("CotohaClient",
         return(NULL)
       }
     },
-    sentence_type = function(document,
-                             type = c("default", "kuzure"),
-                             do_segment = FALSE) {
-      stopifnot(typeof(document) == "character")
-      body <- list(
-        document = paste(document),
-        type = type,
-        do_segment = do_segment
-      )
-      res <- httr::POST(
-        private$getEndpoint("sentence_type"),
-        body = body,
-        encode = "json",
-        content_type = "application/json;charset=UTF-8",
-        httr::add_headers(Authorization = paste("Bearer", self$config$access_token)),
-        httr::verbose()
-      )
-      content <- httr::content(res)
-      if (res$status_code == 200) {
-        return(content$result)
-      } else {
-        message(content$message)
-        return(NULL)
-      }
+    sentence_type = function(sentence,
+                             type = c("default", "kuzure")) {
+      private$request(private$getEndpoint("sentence_type"),
+                      sentence,
+                      type)
     },
     user_attribute = function(document, do_segment = FALSE) {
-      stopifnot(typeof(text) == "character")
+      stopifnot(typeof(document) == "character")
       body <- list(document = paste(document),
                    do_segment = do_segment)
       res <- httr::POST(
@@ -94,8 +109,7 @@ Client <- R6::R6Class("CotohaClient",
         body = body,
         encode = "json",
         content_type = "application/json;charset=UTF-8",
-        httr::add_headers(Authorization = paste("Bearer", self$config$access_token)),
-        httr::verbose()
+        httr::add_headers(Authorization = paste("Bearer", self$config$access_token))
       )
       content <- httr::content(res)
       if (res$status_code == 200) {
@@ -115,15 +129,14 @@ Client <- R6::R6Class("CotohaClient",
         body = body,
         encode = "json",
         content_type = "application/json;charset=UTF-8",
-        httr::add_headers(Authorization = paste("Bearer", self$config$access_token)),
-        httr::verbose()
+        httr::add_headers(Authorization = paste("Bearer", self$config$access_token))
       )
       content <- httr::content(res)
       if (res$status_code == 200) {
         return(content$result)
       } else {
         message(content$message)
-        stop()
+        return(NULL)
       }
     },
     detect_misrecognition = function(sentence) {
@@ -135,8 +148,7 @@ Client <- R6::R6Class("CotohaClient",
         body = body,
         encode = "json",
         content_type = "application/json;charset=UTF-8",
-        httr::add_headers(Authorization = paste("Bearer", self$config$access_token)),
-        httr::verbose()
+        httr::add_headers(Authorization = paste("Bearer", self$config$access_token))
       )
       content <- httr::content(res)
       if (res$status_code == 200) {
@@ -155,8 +167,7 @@ Client <- R6::R6Class("CotohaClient",
         body = body,
         encode = "json",
         content_type = "application/json;charset=UTF-8",
-        httr::add_headers(Authorization = paste("Bearer", self$config$access_token)),
-        httr::verbose()
+        httr::add_headers(Authorization = paste("Bearer", self$config$access_token))
       )
       content <- httr::content(res)
       if (res$status_code == 200) {
@@ -178,8 +189,7 @@ Client <- R6::R6Class("CotohaClient",
         body = body,
         encode = "json",
         content_type = "application/json;charset=UTF-8",
-        httr::add_headers(Authorization = paste("Bearer", self$config$access_token)),
-        httr::verbose()
+        httr::add_headers(Authorization = paste("Bearer", self$config$access_token))
       )
       content <- httr::content(res)
       if (res$status_code == 200) {

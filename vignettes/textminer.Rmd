@@ -1,0 +1,23 @@
+---
+title: "Planeshifter/text-miner on V8"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Planeshifter/text-miner on V8}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+if (!require(conifer)) {
+  devtools::load_all()
+}
+```
+
+*comming soon*
