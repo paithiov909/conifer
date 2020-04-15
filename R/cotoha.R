@@ -11,21 +11,29 @@
 #' @noRd
 Client <- R6::R6Class("CotohaClient",
   public = list(
-    config = list(access_token = NULL,
-                  base_url = NULL),
+    config = list(
+      access_token = NULL,
+      base_url = NULL
+    ),
     initialize = function(access_token, base_url) {
-      self$config = list(access_token = access_token,
-                         base_url = base_url)
+      self$config <- list(
+        access_token = access_token,
+        base_url = base_url
+      )
     },
     parse = function(sentence, type = c("default", "kuzure")) {
-      private$request(private$getEndpoint("parse"),
-                      sentence,
-                      type)
+      private$request(
+        private$getEndpoint("parse"),
+        sentence,
+        type
+      )
     },
     ne = function(sentence, type = c("default", "kuzure")) {
-      private$request(private$getEndpoint("ne"),
-                      sentence,
-                      type)
+      private$request(
+        private$getEndpoint("ne"),
+        sentence,
+        type
+      )
     },
     coreference = function(document, type = c("default", "kuzure"), do_segment = FALSE) {
       stopifnot(typeof(document) == "character")
@@ -94,16 +102,19 @@ Client <- R6::R6Class("CotohaClient",
         return(NULL)
       }
     },
-    sentence_type = function(sentence,
-                             type = c("default", "kuzure")) {
-      private$request(private$getEndpoint("sentence_type"),
-                      sentence,
-                      type)
+    sentence_type = function(sentence, type = c("default", "kuzure")) {
+      private$request(
+        private$getEndpoint("sentence_type"),
+        sentence,
+        type
+      )
     },
     user_attribute = function(document, do_segment = FALSE) {
       stopifnot(typeof(document) == "character")
-      body <- list(document = paste(document),
-                   do_segment = do_segment)
+      body <- list(
+        document = paste(document),
+        do_segment = do_segment
+      )
       res <- httr::POST(
         private$getEndpoint("user_attribute"),
         body = body,
@@ -122,8 +133,10 @@ Client <- R6::R6Class("CotohaClient",
     remove_filler = function(text, do_segment = FALSE) {
       stopifnot(typeof(text) == "character")
       body <-
-        list(text = paste(text, collapse = " "),
-             do_segment = do_segment)
+        list(
+          text = paste(text, collapse = " "),
+          do_segment = do_segment
+        )
       res <- httr::POST(
         private$getEndpoint("remove_filler"),
         body = body,
@@ -182,8 +195,10 @@ Client <- R6::R6Class("CotohaClient",
     request = function(endpoint, sentence, type) {
       stopifnot(typeof(sentence) == "character")
       body <-
-        list(sentence = paste(sentence, collapse = " "),
-             type = type[1])
+        list(
+          sentence = paste(sentence, collapse = " "),
+          type = type[1]
+        )
       res <- httr::POST(
         endpoint,
         body = body,
@@ -242,8 +257,7 @@ Client <- R6::R6Class("CotohaClient",
 #' @seealso \url{https://api.ce-cotoha.com/contents/reference/apireference.html}
 #'
 #' @export
-cotoha <- function(access_token, base_url = "https://api.ce-cotoha.com/api/dev")
-{
+cotoha <- function(access_token, base_url = "https://api.ce-cotoha.com/api/dev") {
   stopifnot(typeof(access_token) == "character")
   return(Client$new(access_token, base_url))
 }
@@ -265,11 +279,12 @@ cotoha <- function(access_token, base_url = "https://api.ce-cotoha.com/api/dev")
 getAccessToken <- function(publish_url,
                            client_id = Sys.getenv("COTOHA_ID"),
                            client_secret = Sys.getenv("COTOHA_SECRET"),
-                           grant_type = "client_credentials")
-{
-  config <- list(grantType = grant_type,
-                 clientId = client_id,
-                 clientSecret = client_secret)
+                           grant_type = "client_credentials") {
+  config <- list(
+    grantType = grant_type,
+    clientId = client_id,
+    clientSecret = client_secret
+  )
 
   res <- httr::POST(
     url = publish_url,
