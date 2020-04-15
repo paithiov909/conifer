@@ -38,3 +38,5 @@ rsconnect/
 *.log
 
 inst/node_modules/
+packrat/lib*/
+packrat/src/

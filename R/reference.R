@@ -217,9 +217,9 @@ NULL
 #' @name stem
 NULL
 
-#' Converts Characters Lower-case
+#' Convert Characters Lower-case
 #'
-#' Converts all characters in the documents to lower-case.
+#' Convert all characters in the documents to lower-case.
 #'
 #' @name toLower
 NULL
