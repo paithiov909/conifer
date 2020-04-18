@@ -241,7 +241,7 @@ NULL
 #' Create Document-Term-Matrix
 #'
 #' This function assigns documemt-term-matrix (DTM) to variable on R environment.
-#' The DTM is weighted with TF-IDF. Each DTM is a list that has properties below.
+#' Each DTM is a list that has properties below.
 #' \itemize{
 #'   \item vocabulary
 #'   \item data
@@ -251,6 +251,7 @@ NULL
 #'
 #' @param dtm_name string. variable name that the DTM will be assigned.
 #' @param percent integer. Function removes all words from the DTM which appear in less than `percent` of the documents.
+#' @param weight boolean. If true, the DTM is weighted with TF-IDF.
 #' @seealso \url{https://github.com/Planeshifter/text-miner#documenttermmatrix--termdocumentmatrix}
 #' @name documentTermMatrix
 NULL

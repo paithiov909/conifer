@@ -1,7 +1,7 @@
 Package: conifer
 Type: Package
 Title: An R Client of COTOHA API for Developers
-Version: 0.0.1.0900
+Version: 0.0.1.0901
 Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
 Author: paithiov909
 Maintainer: Kato Akiru <paithiov909@gmail.com>
@@ -22,5 +22,8 @@ Imports:
 RoxygenNote: 6.1.1
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    DT,
+    tidyverse,
+    ggpubr
 VignetteBuilder: knitr

@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">conifer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.901</span>
       </span>
     </div>
 
@@ -101,12 +101,12 @@
 <a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt; logical.return = TRUE, : 'conifer' という名前のパッケージはありません</span></a>
 <a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; Loading conifer</span></a>
 <a class="sourceLine" id="cb1-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt; -- Attaching packages ---------------------------------------- tidyverse 1.2.1 --</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt; -- Attaching packages ----------------------------------- tidyverse 1.2.1 --</span></a>
 <a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt; √ ggplot2 3.1.1       √ purrr   0.3.2  </span></a>
 <a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt; √ tibble  2.1.1       √ dplyr   0.8.0.1</span></a>
 <a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; √ tidyr   0.8.3       √ stringr 1.4.0  </span></a>
 <a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt; √ readr   1.3.1       √ forcats 0.4.0</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; -- Conflicts ------------------------------------------- tidyverse_conflicts() --</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; -- Conflicts -------------------------------------- tidyverse_conflicts() --</span></a>
 <a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; x dplyr::filter() masks stats::filter()</span></a>
 <a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></a></code></pre></div>
 <div id="usage-of-cotoha-api-client" class="section level2">
@@ -126,47 +126,48 @@
 <div id="parsing-dependency-structure" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parsing-dependency-structure" class="anchor"></a>Parsing dependency structure</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">res &lt;-<span class="st"> </span>client<span class="op">$</span><span class="kw"><a href="../reference/parse.html">parse</a></span>(yamanashi[<span class="dv">13</span>])</a>
-<a class="sourceLine" id="cb3-2" title="2">res <span class="op">%&gt;%</span><span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span>(<span class="cf">function</span>(chunk){</a>
-<a class="sourceLine" id="cb3-3" title="3">    tokens &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span>(chunk<span class="op">$</span>tokens,</a>
-<a class="sourceLine" id="cb3-4" title="4">        <span class="op">~</span><span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
-<a class="sourceLine" id="cb3-5" title="5">          <span class="dt">token_id =</span> .<span class="op">$</span>id,</a>
-<a class="sourceLine" id="cb3-6" title="6">          <span class="dt">form =</span> .<span class="op">$</span>form,</a>
-<a class="sourceLine" id="cb3-7" title="7">          <span class="dt">pos =</span> .<span class="op">$</span>pos</a>
-<a class="sourceLine" id="cb3-8" title="8">        )</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">res &lt;-<span class="st"> </span>client<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/parse">parse</a></span>(yamanashi[<span class="dv">13</span>])</a>
+<a class="sourceLine" id="cb3-2" title="2">res <span class="op">%&gt;%</span><span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span>(<span class="cf">function</span>(chunk) {</a>
+<a class="sourceLine" id="cb3-3" title="3">  tokens &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span>(</a>
+<a class="sourceLine" id="cb3-4" title="4">    chunk<span class="op">$</span>tokens,</a>
+<a class="sourceLine" id="cb3-5" title="5">    <span class="op">~</span><span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
+<a class="sourceLine" id="cb3-6" title="6">      <span class="dt">token_id =</span> .<span class="op">$</span>id,</a>
+<a class="sourceLine" id="cb3-7" title="7">      <span class="dt">form =</span> .<span class="op">$</span>form,</a>
+<a class="sourceLine" id="cb3-8" title="8">      <span class="dt">pos =</span> .<span class="op">$</span>pos</a>
 <a class="sourceLine" id="cb3-9" title="9">    )</a>
-<a class="sourceLine" id="cb3-10" title="10">    chunk_info &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
-<a class="sourceLine" id="cb3-11" title="11">      <span class="dt">chunk_id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(chunk<span class="op">$</span>chunk_info<span class="op">$</span>id, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(tokens)),</a>
-<a class="sourceLine" id="cb3-12" title="12">      <span class="dt">head =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(chunk<span class="op">$</span>chunk_info<span class="op">$</span>head, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(tokens)),</a>
-<a class="sourceLine" id="cb3-13" title="13">      <span class="dt">dep =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(chunk<span class="op">$</span>chunk_info<span class="op">$</span>dep, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(tokens)),</a>
-<a class="sourceLine" id="cb3-14" title="14">      <span class="dt">chunk_head =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(chunk<span class="op">$</span>chunk_info<span class="op">$</span>head, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(tokens)),</a>
-<a class="sourceLine" id="cb3-15" title="15">      <span class="dt">chunk_func =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(chunk<span class="op">$</span>chunk_info<span class="op">$</span>chunk_func, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(tokens)),</a>
-<a class="sourceLine" id="cb3-16" title="16">    )</a>
-<a class="sourceLine" id="cb3-17" title="17">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">return</a></span>(</a>
-<a class="sourceLine" id="cb3-18" title="18">      <span class="kw">bind_cols</span>(chunk_info, tokens)</a>
-<a class="sourceLine" id="cb3-19" title="19">    )</a>
-<a class="sourceLine" id="cb3-20" title="20">})</a>
-<a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt; # A tibble: 11 x 8</span></a>
-<a class="sourceLine" id="cb3-22" title="22"><span class="co">#&gt;    chunk_id  head dep   chunk_head chunk_func token_id form      pos       </span></a>
-<a class="sourceLine" id="cb3-23" title="23"><span class="co">#&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;int&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     </span></a>
-<a class="sourceLine" id="cb3-24" title="24"><span class="co">#&gt;  1        0     3 D              3          1        0 『        括弧      </span></a>
-<a class="sourceLine" id="cb3-25" title="25"><span class="co">#&gt;  2        0     3 D              3          1        1 それなら  接続詞    </span></a>
-<a class="sourceLine" id="cb3-26" title="26"><span class="co">#&gt;  3        1     3 D              3          0        2 なぜ      連用詞    </span></a>
-<a class="sourceLine" id="cb3-27" title="27"><span class="co">#&gt;  4        2     3 D              3          1        3 クラムボン~ 名詞      </span></a>
-<a class="sourceLine" id="cb3-28" title="28"><span class="co">#&gt;  5        2     3 D              3          1        4 は        連用助詞  </span></a>
-<a class="sourceLine" id="cb3-29" title="29"><span class="co">#&gt;  6        3    -1 O             -1          3        5 わら      動詞語幹  </span></a>
-<a class="sourceLine" id="cb3-30" title="30"><span class="co">#&gt;  7        3    -1 O             -1          3        6 っ        動詞活用語尾~</span></a>
-<a class="sourceLine" id="cb3-31" title="31"><span class="co">#&gt;  8        3    -1 O             -1          3        7 た        動詞接尾辞</span></a>
-<a class="sourceLine" id="cb3-32" title="32"><span class="co">#&gt;  9        3    -1 O             -1          3        8 の        終助詞    </span></a>
-<a class="sourceLine" id="cb3-33" title="33"><span class="co">#&gt; 10        3    -1 O             -1          3        9 。        句点      </span></a>
-<a class="sourceLine" id="cb3-34" title="34"><span class="co">#&gt; 11        3    -1 O             -1          3       10 』        括弧</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-10" title="10">  )</a>
+<a class="sourceLine" id="cb3-11" title="11">  chunk_info &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
+<a class="sourceLine" id="cb3-12" title="12">    <span class="dt">chunk_id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(chunk<span class="op">$</span>chunk_info<span class="op">$</span>id, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(tokens)),</a>
+<a class="sourceLine" id="cb3-13" title="13">    <span class="dt">head =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(chunk<span class="op">$</span>chunk_info<span class="op">$</span>head, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(tokens)),</a>
+<a class="sourceLine" id="cb3-14" title="14">    <span class="dt">dep =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(chunk<span class="op">$</span>chunk_info<span class="op">$</span>dep, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(tokens)),</a>
+<a class="sourceLine" id="cb3-15" title="15">    <span class="dt">chunk_head =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(chunk<span class="op">$</span>chunk_info<span class="op">$</span>head, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(tokens)),</a>
+<a class="sourceLine" id="cb3-16" title="16">    <span class="dt">chunk_func =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(chunk<span class="op">$</span>chunk_info<span class="op">$</span>chunk_func, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(tokens)),</a>
+<a class="sourceLine" id="cb3-17" title="17">  )</a>
+<a class="sourceLine" id="cb3-18" title="18">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">return</a></span>(</a>
+<a class="sourceLine" id="cb3-19" title="19">    <span class="kw">bind_cols</span>(chunk_info, tokens)</a>
+<a class="sourceLine" id="cb3-20" title="20">  )</a>
+<a class="sourceLine" id="cb3-21" title="21">})</a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="co">#&gt; # A tibble: 11 x 8</span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="co">#&gt;    chunk_id  head dep   chunk_head chunk_func token_id form      pos       </span></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="co">#&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;int&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     </span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="co">#&gt;  1        0     3 D              3          1        0 『        括弧      </span></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="co">#&gt;  2        0     3 D              3          1        1 それなら  接続詞    </span></a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="co">#&gt;  3        1     3 D              3          0        2 なぜ      連用詞    </span></a>
+<a class="sourceLine" id="cb3-28" title="28"><span class="co">#&gt;  4        2     3 D              3          1        3 クラムボン~ 名詞      </span></a>
+<a class="sourceLine" id="cb3-29" title="29"><span class="co">#&gt;  5        2     3 D              3          1        4 は        連用助詞  </span></a>
+<a class="sourceLine" id="cb3-30" title="30"><span class="co">#&gt;  6        3    -1 O             -1          3        5 わら      動詞語幹  </span></a>
+<a class="sourceLine" id="cb3-31" title="31"><span class="co">#&gt;  7        3    -1 O             -1          3        6 っ        動詞活用語尾~</span></a>
+<a class="sourceLine" id="cb3-32" title="32"><span class="co">#&gt;  8        3    -1 O             -1          3        7 た        動詞接尾辞</span></a>
+<a class="sourceLine" id="cb3-33" title="33"><span class="co">#&gt;  9        3    -1 O             -1          3        8 の        終助詞    </span></a>
+<a class="sourceLine" id="cb3-34" title="34"><span class="co">#&gt; 10        3    -1 O             -1          3        9 。        句点      </span></a>
+<a class="sourceLine" id="cb3-35" title="35"><span class="co">#&gt; 11        3    -1 O             -1          3       10 』        括弧</span></a></code></pre></div>
 </div>
 <div id="named-entity-extraction" class="section level3">
 <h3 class="hasAnchor">
 <a href="#named-entity-extraction" class="anchor"></a>Named entity extraction</h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(yamanashi[<span class="dv">68</span>])</a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; [1] "『もうねろねろ。遅いぞ、あしたイサドへ連れて行かんぞ。』"</span></a>
-<a class="sourceLine" id="cb4-3" title="3">client<span class="op">$</span><span class="kw"><a href="../reference/ne.html">ne</a></span>(yamanashi[<span class="dv">68</span>])</a>
+<a class="sourceLine" id="cb4-3" title="3">client<span class="op">$</span><span class="kw">ne</span>(yamanashi[<span class="dv">68</span>])</a>
 <a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; [[1]]$begin_pos</span></a>
 <a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; [1] 12</span></a>
@@ -192,7 +193,7 @@
 <div id="reference-resolution" class="section level3">
 <h3 class="hasAnchor">
 <a href="#reference-resolution" class="anchor"></a>Reference resolution</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">res &lt;-<span class="st"> </span>client<span class="op">$</span><span class="kw"><a href="../reference/coreference.html">coreference</a></span>(<span class="st">"太郎は友人です。彼は焼き肉を食べた。"</span>)</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">res &lt;-<span class="st"> </span>client<span class="op">$</span><span class="kw">coreference</span>(<span class="st">"太郎は友人です。彼は焼き肉を食べた。"</span>)</a>
 <a class="sourceLine" id="cb5-2" title="2">res<span class="op">$</span>coreference</a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; [[1]]$representative_id</span></a>
@@ -237,7 +238,7 @@
 <a href="#keyword-extraction" class="anchor"></a>Keyword extraction</h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(yamanashi[<span class="dv">57</span>])</a>
 <a class="sourceLine" id="cb6-2" title="2"><span class="co">#&gt; [1] "　そのつめたい水の底まで、ラムネの瓶の月光がいっぱいに透とおり天井では波が青じろい火を、燃したり消したりしているよう、あたりはしんとして、ただいかにも遠くからというように、その波の音がひびいて来るだけです。"</span></a>
-<a class="sourceLine" id="cb6-3" title="3">res &lt;-<span class="st"> </span>client<span class="op">$</span><span class="kw"><a href="../reference/keyword.html">keyword</a></span>(yamanashi[<span class="dv">57</span>])</a>
+<a class="sourceLine" id="cb6-3" title="3">res &lt;-<span class="st"> </span>client<span class="op">$</span><span class="kw">keyword</span>(yamanashi[<span class="dv">57</span>])</a>
 <a class="sourceLine" id="cb6-4" title="4">res</a>
 <a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt; [[1]]$form</span></a>
@@ -284,7 +285,7 @@
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(yamanashi[<span class="dv">11</span>], yamanashi[<span class="dv">12</span>]))</a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="co">#&gt; [1] "『クラムボンはわらっていたよ。』"    </span></a>
 <a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt; [2] "『クラムボンはかぷかぷわらったよ。』"</span></a>
-<a class="sourceLine" id="cb7-4" title="4">client<span class="op">$</span><span class="kw"><a href="../reference/similarity.html">similarity</a></span>(yamanashi[<span class="dv">11</span>], yamanashi[<span class="dv">12</span>])</a>
+<a class="sourceLine" id="cb7-4" title="4">client<span class="op">$</span><span class="kw">similarity</span>(yamanashi[<span class="dv">11</span>], yamanashi[<span class="dv">12</span>])</a>
 <a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt; $score</span></a>
 <a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; [1] 1</span></a></code></pre></div>
 </div>
@@ -294,14 +295,14 @@
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(yamanashi[<span class="dv">12</span>], yamanashi[<span class="dv">13</span>]))</a>
 <a class="sourceLine" id="cb8-2" title="2"><span class="co">#&gt; [1] "『クラムボンはかぷかぷわらったよ。』"    </span></a>
 <a class="sourceLine" id="cb8-3" title="3"><span class="co">#&gt; [2] "『それならなぜクラムボンはわらったの。』"</span></a>
-<a class="sourceLine" id="cb8-4" title="4">client<span class="op">$</span><span class="kw"><a href="../reference/sentence_type.html">sentence_type</a></span>(yamanashi[<span class="dv">12</span>])</a>
+<a class="sourceLine" id="cb8-4" title="4">client<span class="op">$</span><span class="kw">sentence_type</span>(yamanashi[<span class="dv">12</span>])</a>
 <a class="sourceLine" id="cb8-5" title="5"><span class="co">#&gt; $modality</span></a>
 <a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt; [1] "declarative"</span></a>
 <a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt; $dialog_act</span></a>
 <a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt; $dialog_act[[1]]</span></a>
 <a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt; [1] "information-providing"</span></a>
-<a class="sourceLine" id="cb8-11" title="11">client<span class="op">$</span><span class="kw"><a href="../reference/sentence_type.html">sentence_type</a></span>(yamanashi[<span class="dv">13</span>])</a>
+<a class="sourceLine" id="cb8-11" title="11">client<span class="op">$</span><span class="kw">sentence_type</span>(yamanashi[<span class="dv">13</span>])</a>
 <a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt; $modality</span></a>
 <a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt; [1] "interrogative"</span></a>
 <a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt; </span></a>
@@ -315,7 +316,7 @@
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(yamanashi[<span class="dv">29</span>], yamanashi[<span class="dv">40</span>]))</a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="co">#&gt; [1] "『お魚はなぜああ行ったり来たりするの。』"        </span></a>
 <a class="sourceLine" id="cb9-3" title="3"><span class="co">#&gt; [2] "『どうしたい。ぶるぶるふるえているじゃないか。』"</span></a>
-<a class="sourceLine" id="cb9-4" title="4">client<span class="op">$</span><span class="kw"><a href="../reference/user_attribute.html">user_attribute</a></span>(yamanashi[<span class="dv">29</span>])</a>
+<a class="sourceLine" id="cb9-4" title="4">client<span class="op">$</span><span class="kw">user_attribute</span>(yamanashi[<span class="dv">29</span>])</a>
 <a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt; $age</span></a>
 <a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt; [1] "60歳以上"</span></a>
 <a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt; </span></a>
@@ -337,7 +338,7 @@
 <a class="sourceLine" id="cb9-23" title="23"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb9-24" title="24"><span class="co">#&gt; $hobby[[6]]</span></a>
 <a class="sourceLine" id="cb9-25" title="25"><span class="co">#&gt; [1] "TVGAME"</span></a>
-<a class="sourceLine" id="cb9-26" title="26">client<span class="op">$</span><span class="kw"><a href="../reference/user_attribute.html">user_attribute</a></span>(yamanashi[<span class="dv">40</span>])</a>
+<a class="sourceLine" id="cb9-26" title="26">client<span class="op">$</span><span class="kw">user_attribute</span>(yamanashi[<span class="dv">40</span>])</a>
 <a class="sourceLine" id="cb9-27" title="27"><span class="co">#&gt; $age</span></a>
 <a class="sourceLine" id="cb9-28" title="28"><span class="co">#&gt; [1] "40-49歳"</span></a>
 <a class="sourceLine" id="cb9-29" title="29"><span class="co">#&gt; </span></a>
@@ -372,7 +373,7 @@
 <div id="removing-fillers-of-sentence" class="section level3">
 <h3 class="hasAnchor">
 <a href="#removing-fillers-of-sentence" class="anchor"></a>Removing fillers of sentence</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">client<span class="op">$</span><span class="kw"><a href="../reference/remove_filler.html">remove_filler</a></span>(<span class="st">"えーーっと、あの、今日の打ち合わせでしたっけ。すみません、ちょっと、急用が入ってしまって。"</span>)</a>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">client<span class="op">$</span><span class="kw">remove_filler</span>(<span class="st">"えーーっと、あの、今日の打ち合わせでしたっけ。すみません、ちょっと、急用が入ってしまって。"</span>)</a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="co">#&gt; [[1]]$fillers</span></a>
 <a class="sourceLine" id="cb10-4" title="4"><span class="co">#&gt; [[1]]$fillers[[1]]</span></a>
@@ -418,7 +419,7 @@
 <div id="detecting-misrecognition-of-sentence" class="section level3">
 <h3 class="hasAnchor">
 <a href="#detecting-misrecognition-of-sentence" class="anchor"></a>Detecting misrecognition of sentence</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">client<span class="op">$</span><span class="kw"><a href="../reference/detect_misrecognition.html">detect_misrecognition</a></span>(<span class="st">"温泉認識は誤りを起こす"</span>)</a>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">client<span class="op">$</span><span class="kw">detect_misrecognition</span>(<span class="st">"温泉認識は誤りを起こす"</span>)</a>
 <a class="sourceLine" id="cb11-2" title="2"><span class="co">#&gt; $score</span></a>
 <a class="sourceLine" id="cb11-3" title="3"><span class="co">#&gt; [1] 0.9999969</span></a>
 <a class="sourceLine" id="cb11-4" title="4"><span class="co">#&gt; </span></a>
@@ -482,7 +483,7 @@
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(yamanashi[<span class="dv">49</span>], yamanashi[<span class="dv">50</span>]))</a>
 <a class="sourceLine" id="cb12-2" title="2"><span class="co">#&gt; [1] "『こわいよ、お父さん。』"                                                            </span></a>
 <a class="sourceLine" id="cb12-3" title="3"><span class="co">#&gt; [2] "『いいいい、大丈夫だ。心配するな。そら、樺の花が流れて来た。ごらん、きれいだろう。』"</span></a>
-<a class="sourceLine" id="cb12-4" title="4">client<span class="op">$</span><span class="kw"><a href="../reference/sentiment.html">sentiment</a></span>(yamanashi[<span class="dv">49</span>])</a>
+<a class="sourceLine" id="cb12-4" title="4">client<span class="op">$</span><span class="kw">sentiment</span>(yamanashi[<span class="dv">49</span>])</a>
 <a class="sourceLine" id="cb12-5" title="5"><span class="co">#&gt; $sentiment</span></a>
 <a class="sourceLine" id="cb12-6" title="6"><span class="co">#&gt; [1] "Negative"</span></a>
 <a class="sourceLine" id="cb12-7" title="7"><span class="co">#&gt; </span></a>
@@ -496,7 +497,7 @@
 <a class="sourceLine" id="cb12-15" title="15"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb12-16" title="16"><span class="co">#&gt; $emotional_phrase[[1]]$emotion</span></a>
 <a class="sourceLine" id="cb12-17" title="17"><span class="co">#&gt; [1] "N"</span></a>
-<a class="sourceLine" id="cb12-18" title="18">client<span class="op">$</span><span class="kw"><a href="../reference/sentiment.html">sentiment</a></span>(yamanashi[<span class="dv">50</span>])</a>
+<a class="sourceLine" id="cb12-18" title="18">client<span class="op">$</span><span class="kw">sentiment</span>(yamanashi[<span class="dv">50</span>])</a>
 <a class="sourceLine" id="cb12-19" title="19"><span class="co">#&gt; $sentiment</span></a>
 <a class="sourceLine" id="cb12-20" title="20"><span class="co">#&gt; [1] "Positive"</span></a>
 <a class="sourceLine" id="cb12-21" title="21"><span class="co">#&gt; </span></a>

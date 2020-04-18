@@ -19,6 +19,121 @@ knitr::opts_chunk$set(
 if (!require(conifer)) {
   devtools::load_all()
 }
+library(DT)
+library(tidyverse)
+library(ggpubr)
 ```
 
-*comming soon*
+## Text-minig example using Planeshifter/text-miner
+
+### Preparing texts (**Yamanashi** written by Miyazawa Kenji)
+
+```{r}
+# Never forget to set `Access Token Publish URL`
+PUB_URL <- Sys.getenv("PUB_URL")
+my_token <- conifer::getAccessToken(PUB_URL)
+client <- conifer::cotoha(my_token)
+
+data(yamanashi)
+length(yamanashi)
+
+sentences <- list(
+  may = yamanashi[1:53], # The `May` Part
+  dec = yamanashi[54:87] # The `December` Part
+)
+```
+
+### Tokenization
+
+```{r}
+# Analyze with COTOHA API
+res1 <- client$parse(sentences$may)
+res2 <- client$parse(sentences$dec)
+
+# Tidy as a dataframe
+tbl <- list(res1, res2) %>%
+  purrr::imap_dfr(function(chunk, i){
+    df <- purrr::map_dfr(chunk, function(chunk){
+      tokens <- purrr::map_dfr(chunk$tokens,
+          ~ tibble::tibble(
+            token_id = .$id,
+            lemma = .$lemma,
+            form = .$form,
+            pos = .$pos
+          )
+      )
+      chunk_info <- tibble::tibble(
+        chunk_id = rep(chunk$chunk_info$id, nrow(tokens)),
+        head = rep(chunk$chunk_info$head, nrow(tokens)),
+        dep = rep(chunk$chunk_info$dep, nrow(tokens)),
+        chunk_head = rep(chunk$chunk_info$head, nrow(tokens)),
+        chunk_func = rep(chunk$chunk_info$chunk_func, nrow(tokens)),
+      )
+      return(
+        dplyr::bind_cols(chunk_info, tokens)
+      )
+    })
+    return(
+      dplyr::bind_cols(
+        tibble::tibble(
+          part_id = rep(i, nrow(df))
+        ),
+        df
+      )
+    )
+  })
+DT::datatable(tbl)
+```
+
+### Summarising texts
+
+```{r}
+docs <- tbl %>%
+  dplyr::filter(pos != "空白") %>% # remove space chrs
+  dplyr::filter(stringr::str_detect(pos, regex("^(名詞|連体詞|動詞語幹|形容詞語幹)+"))) %>% # select targets by POS
+  dplyr::group_by(part_id) %>%
+  dplyr::summarise_at("lemma", ~ paste(., collapse = " ")) # combine per part
+
+# Cast Document-Term matrix
+tm <- conifer::text_miner()
+tm$addDocs(docs$lemma)
+tm$removeInvalidCharacters()
+tm$clean()
+tm$documentTermMatrix(dtm_name = "mtx", weight = FALSE)
+
+# Convert to Term-Document matrix (a tibble)
+dtm <- as.data.frame(t(mtx$data))
+rownames(dtm) <- mtx$vocabulary
+dtm <- tibble::as_tibble(dtm, .name_repair = "minimal", rownames = NA) %>%
+  tibble::rownames_to_column()
+```
+
+### Plotting
+
+```{r}
+dtm %>%
+  dplyr::top_n(10, V1) %>%
+  ggpubr::ggdotchart(
+    x = "rowname",
+    y = "V1",
+    sorting = "descending",
+    add = "segment",
+    rotate = TRUE,
+    xlab = "term",
+    ylab = "count"
+  ) + ggplot2::theme_dark()
+```
+
+```{r}
+dtm %>%
+  dplyr::top_n(10, V2) %>%
+  ggpubr::ggdotchart(
+    x = "rowname",
+    y = "V2",
+    sorting = "descending",
+    add = "segment",
+    rotate = TRUE,
+    xlab = "term",
+    ylab = "count"
+  ) + ggplot2::theme_dark()
+```
