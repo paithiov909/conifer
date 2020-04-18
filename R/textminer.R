@@ -87,7 +87,7 @@ TextMiner <- R6::R6Class("TextMiner",
 
 #' Create Corpus with text-miner
 #'
-#' Return an Planeshifter/text-miner V8 binding.
+#' Return a Planeshifter/text-miner V8 binding.
 #'
 #' @param ctx Your own V8 context if any.
 #'

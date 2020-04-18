@@ -29,7 +29,7 @@ R6 class object having methods below.
 }
 }
 \description{
-Return an Planeshifter/text-miner V8 binding.
+Return a Planeshifter/text-miner V8 binding.
 }
 \seealso{
 \url{https://github.com/Planeshifter/text-miner}
