@@ -64,18 +64,29 @@ TextMiner <- R6::R6Class("TextMiner",
       self$ctx$eval("corpus.trim()")
       invisible(NULL)
     },
-    documentTermMatrix = function(dtm_name = "dtm", percent = 0L) {
+    documentTermMatrix = function(dtm_name = "dtm", percent = 0L, weight = TRUE) {
       self$ctx$assign("dtm_name", dtm_name)
       self$ctx$assign("percent", percent)
-      self$ctx$eval(paste(
-        "console.r.assign(
-            dtm_name,
-            tm.documentTermMatrix(corpus)
-                .removeSparseTerms(percent)
-                .fill_zeros()
-                .weighting(tm.weightTfIdf)
-            )"
-      ))
+      if (weight == TRUE) {
+        self$ctx$eval(paste(
+          "console.r.assign(
+              dtm_name,
+              tm.documentTermMatrix(corpus)
+                  .removeSparseTerms(percent)
+                  .fill_zeros()
+                  .weighting(tm.weightTfIdf)
+              )"
+        ))
+      } else {
+        self$ctx$eval(paste(
+          "console.r.assign(
+              dtm_name,
+              tm.documentTermMatrix(corpus)
+                  .removeSparseTerms(percent)
+                  .fill_zeros()
+              )"
+        ))
+      }
       invisible(NULL)
     },
     expandContractions = function() {

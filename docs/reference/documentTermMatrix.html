@@ -33,7 +33,7 @@
 <meta property="og:title" content="Create Document-Term-Matrix — documentTermMatrix" />
 
 <meta property="og:description" content="This function assigns documemt-term-matrix (DTM) to variable on R environment.
-The DTM is weighted with TF-IDF. Each DTM is a list that has properties below.
+Each DTM is a list that has properties below.
 vocabulary
 data
 nDocs
@@ -69,7 +69,7 @@ nTerms
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">conifer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.901</span>
       </span>
     </div>
 
@@ -131,7 +131,7 @@ nTerms
     <div class="ref-description">
     
     <p>This function assigns documemt-term-matrix (DTM) to variable on R environment.
-The DTM is weighted with TF-IDF. Each DTM is a list that has properties below.</p><ul>
+Each DTM is a list that has properties below.</p><ul>
 <li><p>vocabulary</p></li>
 <li><p>data</p></li>
 <li><p>nDocs</p></li>
@@ -151,6 +151,10 @@ The DTM is weighted with TF-IDF. Each DTM is a list that has properties below.</
     <tr>
       <th>percent</th>
       <td><p>integer. Function removes all words from the DTM which appear in less than `percent` of the documents.</p></td>
+    </tr>
+    <tr>
+      <th>weight</th>
+      <td><p>boolean. If true, the DTM is weighted with TF-IDF.</p></td>
     </tr>
     </table>
     

@@ -7,10 +7,12 @@
 \item{dtm_name}{string. variable name that the DTM will be assigned.}
 
 \item{percent}{integer. Function removes all words from the DTM which appear in less than `percent` of the documents.}
+
+\item{weight}{boolean. If true, the DTM is weighted with TF-IDF.}
 }
 \description{
 This function assigns documemt-term-matrix (DTM) to variable on R environment.
-The DTM is weighted with TF-IDF. Each DTM is a list that has properties below.
+Each DTM is a list that has properties below.
 \itemize{
   \item vocabulary
   \item data
