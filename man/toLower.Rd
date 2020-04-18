@@ -2,7 +2,7 @@
 % Please edit documentation in R/reference.R
 \name{toLower}
 \alias{toLower}
-\title{Converts Characters Lower-case}
+\title{Convert Characters Lower-case}
 \description{
-Converts all characters in the documents to lower-case.
+Convert all characters in the documents to lower-case.
 }

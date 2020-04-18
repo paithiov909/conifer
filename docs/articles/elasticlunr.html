@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">conifer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.901</span>
       </span>
     </div>
 
@@ -109,15 +109,15 @@
 <a href="#add-documents-to-index" class="anchor"></a>Add documents to index</h4>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">index &lt;-<span class="st"> </span>conifer<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/conifer/topics/elasticlunr">elasticlunr</a></span>()</a>
 <a class="sourceLine" id="cb2-2" title="2">documents &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
-<a class="sourceLine" id="cb2-3" title="3">    <span class="dt">id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>),</a>
-<a class="sourceLine" id="cb2-4" title="4">    <span class="dt">body =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"この木なんの木"</span>, <span class="st">"気になる木"</span>, <span class="st">"名前も知らない木ですから"</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3">  <span class="dt">id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>),</a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="dt">body =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"この木なんの木"</span>, <span class="st">"気になる木"</span>, <span class="st">"名前も知らない木ですから"</span>)</a>
 <a class="sourceLine" id="cb2-5" title="5">)</a>
-<a class="sourceLine" id="cb2-6" title="6">index<span class="op">$</span><span class="kw"><a href="../reference/add.html">add</a></span>(documents)</a></code></pre></div>
+<a class="sourceLine" id="cb2-6" title="6">index<span class="op">$</span><span class="kw">add</span>(documents)</a></code></pre></div>
 </div>
 <div id="search-index" class="section level3">
 <h3 class="hasAnchor">
 <a href="#search-index" class="anchor"></a>Search index</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">index<span class="op">$</span><span class="kw"><a href="../reference/search.html">search</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>)) <span class="co"># Default is "OR" search with no expanding.</span></a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">index<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/search">search</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>)) <span class="co"># Default is "OR" search with no expanding.</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt;   ref      score</span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; 1   3 0.99874697</span></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt; 2   1 0.12592121</span></a>
@@ -127,12 +127,12 @@
 <h3 class="hasAnchor">
 <a href="#update-documents-in-index" class="anchor"></a>Update documents in index</h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">documents &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
-<a class="sourceLine" id="cb4-2" title="2">    <span class="dt">id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"1"</span>, <span class="st">"2"</span>),</a>
-<a class="sourceLine" id="cb4-3" title="3">    <span class="dt">body =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"名前も知らない"</span>, <span class="st">"木になるでしょう"</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="dt">id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"1"</span>, <span class="st">"2"</span>),</a>
+<a class="sourceLine" id="cb4-3" title="3">  <span class="dt">body =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"名前も知らない"</span>, <span class="st">"木になるでしょう"</span>)</a>
 <a class="sourceLine" id="cb4-4" title="4">)</a>
-<a class="sourceLine" id="cb4-5" title="5">index<span class="op">$</span><span class="kw"><a href="../reference/update.html">update</a></span>(documents)</a>
+<a class="sourceLine" id="cb4-5" title="5">index<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(documents)</a>
 <a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7">index<span class="op">$</span><span class="kw"><a href="../reference/search.html">search</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>))</a>
+<a class="sourceLine" id="cb4-7" title="7">index<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/search">search</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>))</a>
 <a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt;   ref     score</span></a>
 <a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt; 1   3 0.8504201</span></a>
 <a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt; 2   1 0.5000000</span></a>
@@ -142,12 +142,12 @@
 <h3 class="hasAnchor">
 <a href="#remove-documents-from-index" class="anchor"></a>Remove documents from index</h3>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">documents &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
-<a class="sourceLine" id="cb5-2" title="2">    <span class="dt">id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"3"</span>),</a>
-<a class="sourceLine" id="cb5-3" title="3">    <span class="dt">body =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"名前も知らない木ですから"</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="dt">id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"3"</span>),</a>
+<a class="sourceLine" id="cb5-3" title="3">  <span class="dt">body =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"名前も知らない木ですから"</span>)</a>
 <a class="sourceLine" id="cb5-4" title="4">)</a>
-<a class="sourceLine" id="cb5-5" title="5">index<span class="op">$</span><span class="kw"><a href="../reference/remove.html">remove</a></span>(documents)</a>
+<a class="sourceLine" id="cb5-5" title="5">index<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rm">remove</a></span>(documents)</a>
 <a class="sourceLine" id="cb5-6" title="6"></a>
-<a class="sourceLine" id="cb5-7" title="7">index<span class="op">$</span><span class="kw"><a href="../reference/search.html">search</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>))</a>
+<a class="sourceLine" id="cb5-7" title="7">index<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/search">search</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>))</a>
 <a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;   ref     score</span></a>
 <a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt; 1   1 0.5000000</span></a>
 <a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt; 2   2 0.1118034</span></a></code></pre></div>
