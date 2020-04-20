@@ -6,5 +6,17 @@
 \alias{conifer-package}
 \title{conifer: R client of COTOHA API for Developers}
 \description{
-conifer: R client of COTOHA API for Developers
+R client of COTOHA API for Developers.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/paithiov909/conifer}
+  \item Report bugs at \url{https://github.com/paithiov909/conifer/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Kato Akiru \email{paithiov909@gmail.com}
+
 }

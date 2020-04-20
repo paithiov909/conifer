@@ -2,4 +2,4 @@
 #'
 #' @docType package
 #' @name conifer
-NULL
+"_PACKAGE"
