@@ -1,5 +1,7 @@
 destination: docs
 
+url: https://paithiov909.github.io/conifer
+
 reference:
     - title: "{conifer} package"
       contents: conifer

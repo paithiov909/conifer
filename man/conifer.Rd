@@ -6,6 +6,8 @@
 \alias{conifer-package}
 \title{conifer: R client of COTOHA API for Developers}
 \description{
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+
 R client of COTOHA API for Developers.
 }
 \seealso{

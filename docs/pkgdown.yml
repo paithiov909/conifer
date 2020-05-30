@@ -5,4 +5,7 @@ articles:
   cotoha: cotoha.html
   elasticlunr: elasticlunr.html
   textminer: textminer.html
+urls:
+  reference: https://paithiov909.github.io/conifer/reference
+  article: https://paithiov909.github.io/conifer/articles
 

@@ -1,4 +1,4 @@
-# conifer
+# conifer <a href='https://paithiov909.github.io/conifer'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/conifer)](#) [![GitHub license](https://img.shields.io/github/license/paithiov909/conifer.svg)](https://github.com/paithiov909/conifer/blob/master/LICENSE) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
@@ -54,3 +54,4 @@ Copyright (c) 2020 Kato Akiru
 
 Released under the MIT license https://github.com/paithiov909/conifer/blob/master/LICENSE
 
+Icons made by [bqlqn](https://www.flaticon.com/free-icon/tree_2405113?term=tree-leaf&page=3&position=53) from [www.flaticon.com](https://www.flaticon.com/).
