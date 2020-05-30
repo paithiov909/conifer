@@ -1,5 +1,6 @@
 ---
 title: "elasticlunr.js on V8"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{elasticlunr.js on V8}
@@ -7,15 +8,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   tidy = "styler",
   collapse = TRUE,
   comment = "#>"
 )
-```
-
-```{r setup}
 if (!require(conifer)) {
   devtools::load_all()
 }
@@ -69,3 +67,4 @@ index$search(c("木", "知らない"))
 
 - [weixsong/elasticlunr.js](https://github.com/weixsong/elasticlunr.js)
 - [weixsong/lunr-languages](https://github.com/weixsong/lunr-languages)
+

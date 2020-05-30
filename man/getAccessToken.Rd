@@ -4,9 +4,12 @@
 \alias{getAccessToken}
 \title{Getting Access Token of COTOHA API}
 \usage{
-getAccessToken(publish_url, client_id = Sys.getenv("COTOHA_ID"),
+getAccessToken(
+  publish_url,
+  client_id = Sys.getenv("COTOHA_ID"),
   client_secret = Sys.getenv("COTOHA_SECRET"),
-  grant_type = "client_credentials")
+  grant_type = "client_credentials"
+)
 }
 \arguments{
 \item{publish_url}{string.}
@@ -16,6 +19,9 @@ getAccessToken(publish_url, client_id = Sys.getenv("COTOHA_ID"),
 \item{client_secret}{string.}
 
 \item{grant_type}{string.}
+}
+\value{
+return access token only when the authentication successed. If failed, then return httr response invisibly.
 }
 \description{
 Getting Access Token of COTOHA API

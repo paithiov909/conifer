@@ -1,5 +1,6 @@
 ---
 title: "Planeshifter/text-miner on V8"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Planeshifter/text-miner on V8}
@@ -7,15 +8,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   tidy = "styler",
   collapse = TRUE,
   comment = "#>"
 )
-```
-
-```{r setup}
 if (!require(conifer)) {
   devtools::load_all()
 }
@@ -103,7 +101,7 @@ tm$documentTermMatrix(dtm_name = "mtx", weight = FALSE)
 
 # Convert to Term-Document matrix (a tibble)
 dtm <- as.data.frame(t(mtx$data))
-rownames(dtm) <- mtx$vocabulary
+row.names(dtm) <- mtx$vocabulary
 dtm <- tibble::as_tibble(dtm, .name_repair = "minimal", rownames = NA) %>%
   tibble::rownames_to_column()
 ```
@@ -137,3 +135,4 @@ dtm %>%
     ylab = "count"
   ) + ggplot2::theme_dark()
 ```
+

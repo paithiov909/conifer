@@ -272,6 +272,8 @@ cotoha <- function(access_token, base_url = "https://api.ce-cotoha.com/api/dev")
 #' @param client_secret string.
 #' @param grant_type string.
 #'
+#' @return return access token only when the authentication successed. If failed, then return httr response invisibly.
+#'
 #' @importFrom httr POST
 #' @importFrom httr content
 #' @importFrom httr verbose

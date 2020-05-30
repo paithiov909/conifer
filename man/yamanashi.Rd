@@ -4,7 +4,9 @@
 \name{yamanashi}
 \alias{yamanashi}
 \title{Yamanashi}
-\format{An object of class \code{character} of length 87.}
+\format{
+An object of class \code{character} of length 87.
+}
 \source{
 \url{https://www.aozora.gr.jp/cards/000081/card46605.html}
 }

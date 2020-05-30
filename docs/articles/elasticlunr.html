@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>elasticlunr.js on V8 • conifer</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="elasticlunr.js on V8">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -30,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">conifer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.901</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
       </span>
     </div>
 
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -67,7 +68,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/paithiov909/conifer">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -80,11 +81,13 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
+
+      </header><script src="elasticlunr_files/header-attrs-2.1/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>elasticlunr.js on V8</h1>
             
+            <h4 class="date">2020-05-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/conifer/blob/master/vignettes/elasticlunr.Rmd"><code>vignettes/elasticlunr.Rmd</code></a></small>
       <div class="hidden name"><code>elasticlunr.Rmd</code></div>
@@ -93,64 +96,56 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">require</a></span>(conifer)) {</a>
-<a class="sourceLine" id="cb1-2" title="2">  devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/load_all">load_all</a></span>()</a>
-<a class="sourceLine" id="cb1-3" title="3">}</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co">#&gt;  要求されたパッケージ conifer をロード中です</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt; Warning in library(package, lib.loc = lib.loc, character.only = TRUE,</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt; logical.return = TRUE, : 'conifer' という名前のパッケージはありません</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; Loading conifer</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tibble)</a></code></pre></div>
 <div id="usage-of-elasticlunr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage-of-elasticlunr" class="anchor"></a>Usage of elasticlunr</h2>
 <div id="add-documents-to-index" class="section level4">
 <h4 class="hasAnchor">
 <a href="#add-documents-to-index" class="anchor"></a>Add documents to index</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">index &lt;-<span class="st"> </span>conifer<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/conifer/topics/elasticlunr">elasticlunr</a></span>()</a>
-<a class="sourceLine" id="cb2-2" title="2">documents &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
-<a class="sourceLine" id="cb2-3" title="3">  <span class="dt">id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>),</a>
-<a class="sourceLine" id="cb2-4" title="4">  <span class="dt">body =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"この木なんの木"</span>, <span class="st">"気になる木"</span>, <span class="st">"名前も知らない木ですから"</span>)</a>
-<a class="sourceLine" id="cb2-5" title="5">)</a>
-<a class="sourceLine" id="cb2-6" title="6">index<span class="op">$</span><span class="kw">add</span>(documents)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>index &lt;-<span class="st"> </span>conifer<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/conifer/man/elasticlunr.html">elasticlunr</a></span>()</span>
+<span id="cb1-2"><a href="#cb1-2"></a>documents &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="dt">id =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>),</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="dt">body =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"この木なんの木"</span>, <span class="st">"気になる木"</span>, <span class="st">"名前も知らない木ですから"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>index<span class="op">$</span><span class="kw"><a href="../reference/add.html">add</a></span>(documents)</span></code></pre></div>
 </div>
 <div id="search-index" class="section level3">
 <h3 class="hasAnchor">
 <a href="#search-index" class="anchor"></a>Search index</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">index<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/search">search</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>)) <span class="co"># Default is "OR" search with no expanding.</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt;   ref      score</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; 1   3 0.99874697</span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt; 2   1 0.12592121</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt; 3   2 0.08903974</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>index<span class="op">$</span><span class="kw"><a href="../reference/search.html">search</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>)) <span class="co"># Default is "OR" search with no expanding.</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#&gt;   ref      score</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt; 1   3 0.99874697</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt; 2   1 0.12592121</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt; 3   2 0.08903974</span></span></code></pre></div>
 </div>
 <div id="update-documents-in-index" class="section level3">
 <h3 class="hasAnchor">
 <a href="#update-documents-in-index" class="anchor"></a>Update documents in index</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">documents &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="dt">id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"1"</span>, <span class="st">"2"</span>),</a>
-<a class="sourceLine" id="cb4-3" title="3">  <span class="dt">body =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"名前も知らない"</span>, <span class="st">"木になるでしょう"</span>)</a>
-<a class="sourceLine" id="cb4-4" title="4">)</a>
-<a class="sourceLine" id="cb4-5" title="5">index<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(documents)</a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7">index<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/search">search</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>))</a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt;   ref     score</span></a>
-<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt; 1   3 0.8504201</span></a>
-<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt; 2   1 0.5000000</span></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt; 3   2 0.1118034</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>documents &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="dt">id =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"1"</span>, <span class="st">"2"</span>),</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="dt">body =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"名前も知らない"</span>, <span class="st">"木になるでしょう"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>index<span class="op">$</span><span class="kw"><a href="../reference/update.html">update</a></span>(documents)</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>index<span class="op">$</span><span class="kw"><a href="../reference/search.html">search</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>))</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;   ref     score</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt; 1   3 0.8504201</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt; 2   1 0.5000000</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt; 3   2 0.1118034</span></span></code></pre></div>
 </div>
 <div id="remove-documents-from-index" class="section level3">
 <h3 class="hasAnchor">
 <a href="#remove-documents-from-index" class="anchor"></a>Remove documents from index</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">documents &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
-<a class="sourceLine" id="cb5-2" title="2">  <span class="dt">id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"3"</span>),</a>
-<a class="sourceLine" id="cb5-3" title="3">  <span class="dt">body =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"名前も知らない木ですから"</span>)</a>
-<a class="sourceLine" id="cb5-4" title="4">)</a>
-<a class="sourceLine" id="cb5-5" title="5">index<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rm">remove</a></span>(documents)</a>
-<a class="sourceLine" id="cb5-6" title="6"></a>
-<a class="sourceLine" id="cb5-7" title="7">index<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/search">search</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>))</a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;   ref     score</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt; 1   1 0.5000000</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt; 2   2 0.1118034</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>documents &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="dt">id =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"3"</span>),</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="dt">body =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"名前も知らない木ですから"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>index<span class="op">$</span><span class="kw"><a href="../reference/remove.html">remove</a></span>(documents)</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a>index<span class="op">$</span><span class="kw"><a href="../reference/search.html">search</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"木"</span>, <span class="st">"知らない"</span>))</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;   ref     score</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt; 1   1 0.5000000</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt; 2   2 0.1118034</span></span></code></pre></div>
 </div>
 </div>
 <div id="related-repositories" class="section level2">
@@ -164,6 +159,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -177,17 +173,20 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Kato Akiru.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
