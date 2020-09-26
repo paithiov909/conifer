@@ -4,18 +4,6 @@
     <loc>https://paithiov909.github.io/conifer/index.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/conifer/reference/add.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/addDoc.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/addDocs.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/clean.html</loc>
-  </url>
-  <url>
     <loc>https://paithiov909.github.io/conifer/reference/conifer.html</loc>
   </url>
   <url>
@@ -28,15 +16,6 @@
     <loc>https://paithiov909.github.io/conifer/reference/detect_misrecognition.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/conifer/reference/documentTermMatrix.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/elasticlunr.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/expandContractions.html</loc>
-  </url>
-  <url>
     <loc>https://paithiov909.github.io/conifer/reference/getAccessToken.html</loc>
   </url>
   <url>
@@ -46,34 +25,10 @@
     <loc>https://paithiov909.github.io/conifer/reference/ne.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/conifer/reference/normalize.html</loc>
-  </url>
-  <url>
     <loc>https://paithiov909.github.io/conifer/reference/parse.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/conifer/reference/remove.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/removeDigits.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/removeInterpunctuation.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/removeInvalidCharacters.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/removeNewLines.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/removeWords.html</loc>
-  </url>
-  <url>
     <loc>https://paithiov909.github.io/conifer/reference/remove_filler.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/search.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/conifer/reference/sentence_type.html</loc>
@@ -85,24 +40,6 @@
     <loc>https://paithiov909.github.io/conifer/reference/similarity.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/conifer/reference/stem.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/text_miner.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/toLower.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/toUpper.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/trim.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/reference/update.html</loc>
-  </url>
-  <url>
     <loc>https://paithiov909.github.io/conifer/reference/user_attribute.html</loc>
   </url>
   <url>
@@ -110,11 +47,5 @@
   </url>
   <url>
     <loc>https://paithiov909.github.io/conifer/articles/cotoha.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/articles/elasticlunr.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/conifer/articles/textminer.html</loc>
   </url>
 </urlset>

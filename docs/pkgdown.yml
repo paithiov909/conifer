@@ -3,8 +3,6 @@ pkgdown: 1.4.1
 pkgdown_sha: cdd834011ab1f0a8dd7d84428d19a4a63800c4d4
 articles:
   cotoha: cotoha.html
-  elasticlunr: elasticlunr.html
-  textminer: textminer.html
 urls:
   reference: https://paithiov909.github.io/conifer/reference
   article: https://paithiov909.github.io/conifer/articles
