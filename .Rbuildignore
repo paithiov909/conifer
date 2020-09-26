@@ -1,8 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^\inst\node_modules$
 ^docs$
 ^pkgdown$
 ^_pkgdown.yml$
-^packrat/
 ^\.Rprofile$
