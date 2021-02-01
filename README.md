@@ -7,7 +7,7 @@
 
 ## Installation
 
-```R
+```r
 remotes::install_github("paithiov909/conifer")
 ```
 
@@ -51,8 +51,6 @@ client$keyword("翔んで埼玉 お前はまだグンマを知らない")
 
 ## License
 
-Copyright (c) 2020 Kato Akiru
-
-Released under the MIT license https://github.com/paithiov909/conifer/blob/master/LICENSE
+MIT license.
 
 Icons made by [bqlqn](https://www.flaticon.com/free-icon/tree_2405113?term=tree-leaf&page=3&position=53) from [www.flaticon.com](https://www.flaticon.com/).
