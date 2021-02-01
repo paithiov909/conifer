@@ -45,7 +45,7 @@ client$keyword("翔んで埼玉 お前はまだグンマを知らない")
 #> [1] 13.0929
 ```
 
-## Related Repository
+## Related Products
 
 - [ocean-v/rcotoha: rcotoha: R for COTOHA API](https://github.com/ocean-v/rcotoha)
 
