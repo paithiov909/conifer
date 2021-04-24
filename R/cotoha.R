@@ -3,10 +3,8 @@
 #' @name cotoha_client
 #'
 #' @import R6
-#' @importFrom httr POST
-#' @importFrom httr content
-#' @importFrom httr add_headers
-#' @importFrom httr verbose
+#' @importFrom rlang arg_match
+#' @importFrom httr POST content add_headers verbose
 #' @importFrom dplyr case_when
 #' @noRd
 Client <- R6::R6Class("CotohaClient",
@@ -39,7 +37,7 @@ Client <- R6::R6Class("CotohaClient",
       stopifnot(typeof(document) == "character")
       body <- list(
         document = paste(document),
-        type = type[1],
+        type = rlang::arg_match(type, c("default", "kuzure")),
         do_segment = do_segment
       )
       res <- httr::POST(
@@ -61,7 +59,7 @@ Client <- R6::R6Class("CotohaClient",
       stopifnot(typeof(document) == "character")
       body <- list(
         document = paste(document),
-        type = type[1],
+        type = rlang::arg_match(type, c("default", "kuzure")),
         do_segment = do_segment,
         max_keyword_num = max_keyword_num
       )
@@ -85,7 +83,7 @@ Client <- R6::R6Class("CotohaClient",
       body <- list(
         s1 = paste(s1, collapse = " "),
         s2 = paste(s2, collapse = " "),
-        type = type[1]
+        type = rlang::arg_match(type, c("default", "kuzure"))
       )
       res <- httr::POST(
         private$getEndpoint("similarity"),
@@ -197,7 +195,7 @@ Client <- R6::R6Class("CotohaClient",
       body <-
         list(
           sentence = paste(sentence, collapse = " "),
-          type = type[1]
+          type = rlang::arg_match(type, c("default", "kuzure"))
         )
       res <- httr::POST(
         endpoint,
@@ -301,6 +299,6 @@ getAccessToken <- function(publish_url,
     return(content$access_token)
   } else {
     message("Authentication failed")
-    invisible(res)
+    return(invisible(res))
   }
 }
