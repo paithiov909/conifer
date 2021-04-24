@@ -1,4 +1,4 @@
-# conifer <a href='https://paithiov909.github.io/conifer'><img src='https://raw.githack.com/paithiov909/conifer/master/man/figures/logo.png' align="right" height="139" /></a>
+# conifer <a href='https://paithiov909.github.io/conifer'><img src='https://raw.githack.com/paithiov909/conifer/main/man/figures/logo.png' align="right" height="139" /></a>
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/conifer)](#)
 [![GitHub license](https://img.shields.io/github/license/paithiov909/conifer.svg)](https://github.com/paithiov909/conifer/blob/main/LICENSE)
