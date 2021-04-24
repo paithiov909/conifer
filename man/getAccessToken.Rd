@@ -21,7 +21,8 @@ getAccessToken(
 \item{grant_type}{string.}
 }
 \value{
-return access token only when the authentication successed. If failed, then return httr response invisibly.
+return access token only when the authorization succeeded.
+If failed, then return the httr response invisibly.
 }
 \description{
 Getting Access Token of COTOHA API
