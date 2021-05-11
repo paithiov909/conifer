@@ -1,11 +1,6 @@
 #' COTOHA Client Class.
 #'
 #' @name cotoha_client
-#'
-#' @import R6
-#' @importFrom rlang arg_match
-#' @importFrom httr POST content add_headers verbose
-#' @importFrom dplyr case_when
 #' @noRd
 Client <- R6::R6Class("CotohaClient",
   public = list(
@@ -273,7 +268,6 @@ cotoha <- function(access_token, base_url = "https://api.ce-cotoha.com/api/dev")
 #' @return return access token only when the authorization succeeded.
 #' If failed, then return the httr response invisibly.
 #'
-#' @importFrom httr POST content verbose
 #' @export
 getAccessToken <- function(publish_url,
                            client_id = Sys.getenv("COTOHA_ID"),

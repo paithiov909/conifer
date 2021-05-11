@@ -14,10 +14,10 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-if (!require(conifer)) {
-  devtools::load_all()
-}
-library(tidyverse)
+stopifnot(
+  require(conifer),
+  require(magrittr)
+)
 ```
 
 ## Usage of COTOHA API client
