@@ -2,8 +2,8 @@ pandoc: 2.11.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  cotoha: cotoha.html
-last_built: 2021-04-24T03:24Z
+  conifer: conifer.html
+last_built: 2021-06-21T16:33Z
 urls:
   reference: https://paithiov909.github.io/conifer/reference
   article: https://paithiov909.github.io/conifer/articles

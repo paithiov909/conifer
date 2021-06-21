@@ -16,10 +16,9 @@ RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Suggests: 
     knitr,
-    rmarkdown,
-    tidyverse
+    rmarkdown
 Imports: 
     R6,
-    httr,
     dplyr,
+    httr,
     rlang

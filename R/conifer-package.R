@@ -5,4 +5,5 @@
 #' @import R6
 #' @docType package
 #' @name conifer
+#' @keywords internal
 "_PACKAGE"

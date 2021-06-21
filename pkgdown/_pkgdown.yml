@@ -2,14 +2,8 @@ destination: docs
 
 url: https://paithiov909.github.io/conifer
 
-template:
-  params:
-    ganalytics: UA-73417314-25
-
 reference:
-    - title: "{conifer} package"
-      contents: conifer
-    - title: "Using COTOHA API"
+    - title: "COTOHA API Client"
       contents:
         - getAccessToken
         - cotoha

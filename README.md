@@ -1,4 +1,4 @@
-# conifer <a href='https://paithiov909.github.io/conifer'><img src='https://raw.githack.com/paithiov909/conifer/main/man/figures/logo.png' align="right" height="139" /></a>
+# conifer <a href='https://paithiov909.github.io/conifer'><img src='https://rawcdn.githack.com/paithiov909/conifer/00f193f38dcefbcf7ab8a377fce7df493cd59a76/man/figures/logo.png' align="right" height="139" /></a>
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/conifer)](#)
 [![GitHub license](https://img.shields.io/github/license/paithiov909/conifer.svg)](https://github.com/paithiov909/conifer/blob/main/LICENSE)
@@ -25,7 +25,7 @@ client <- conifer::cotoha(token)
 
 ### Calling API
 
-See the [reference](https://paithiov909.github.io/conifer/reference/index.html#section-using-cotoha-api) for more info.
+See the [reference](https://paithiov909.github.io/conifer/reference/index.html) for more info.
 
 ```r
 client$keyword("翔んで埼玉 お前はまだグンマを知らない")
