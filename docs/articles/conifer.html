@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">conifer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.5.900</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.6</span>
       </span>
     </div>
 
@@ -74,12 +74,12 @@
 
       
 
-      </header><script src="conifer_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
+      </header><script src="conifer_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using COTOHA API</h1>
             
-            <h4 class="date">2021-06-22</h4>
+            <h4 class="date">2021-10-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/conifer/blob/master/vignettes/conifer.Rmd"><code>vignettes/conifer.Rmd</code></a></small>
       <div class="hidden name"><code>conifer.Rmd</code></div>
@@ -108,40 +108,22 @@
 <a href="#parsing-dependency-structure" class="anchor"></a>Parsing dependency structure</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">client</span><span class="op">$</span><span class="fu">parse</span><span class="op">(</span><span class="va">yamanashi</span><span class="op">[</span><span class="fl">13</span><span class="op">]</span><span class="op">)</span>
-<span class="va">res</span> <span class="op">%&gt;%</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">tokens</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span><span class="op">(</span>
-    <span class="va">chunk</span><span class="op">$</span><span class="va">tokens</span>,
-    <span class="op">~</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
-      token_id <span class="op">=</span> <span class="va">.</span><span class="op">$</span><span class="va">id</span>,
-      form <span class="op">=</span> <span class="va">.</span><span class="op">$</span><span class="va">form</span>,
-      pos <span class="op">=</span> <span class="va">.</span><span class="op">$</span><span class="va">pos</span>
-    <span class="op">)</span>
-  <span class="op">)</span>
-  <span class="va">chunk_info</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
-    chunk_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">$</span><span class="va">chunk_info</span><span class="op">$</span><span class="va">id</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">tokens</span><span class="op">)</span><span class="op">)</span>,
-    head <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">$</span><span class="va">chunk_info</span><span class="op">$</span><span class="va">head</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">tokens</span><span class="op">)</span><span class="op">)</span>,
-    dep <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">$</span><span class="va">chunk_info</span><span class="op">$</span><span class="va">dep</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">tokens</span><span class="op">)</span><span class="op">)</span>,
-    chunk_head <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">$</span><span class="va">chunk_info</span><span class="op">$</span><span class="va">head</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">tokens</span><span class="op">)</span><span class="op">)</span>,
-    chunk_func <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">$</span><span class="va">chunk_info</span><span class="op">$</span><span class="va">chunk_func</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">tokens</span><span class="op">)</span><span class="op">)</span>,
-  <span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span>
-    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_cols</a></span><span class="op">(</span><span class="va">chunk_info</span>, <span class="va">tokens</span><span class="op">)</span>
-  <span class="op">)</span>
-<span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 11 x 8</span>
-<span class="co">#&gt;    chunk_id  head dep   chunk_head chunk_func token_id form       pos         </span>
-<span class="co">#&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;int&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;       </span>
-<span class="co">#&gt;  1        0     3 D              3          1        0 『         括弧        </span>
-<span class="co">#&gt;  2        0     3 D              3          1        1 それなら   接続詞      </span>
-<span class="co">#&gt;  3        1     3 D              3          0        2 なぜ       連用詞      </span>
-<span class="co">#&gt;  4        2     3 D              3          1        3 クラムボン 名詞        </span>
-<span class="co">#&gt;  5        2     3 D              3          1        4 は         連用助詞    </span>
-<span class="co">#&gt;  6        3    -1 O             -1          3        5 わら       動詞語幹    </span>
-<span class="co">#&gt;  7        3    -1 O             -1          3        6 っ         動詞活用語尾</span>
-<span class="co">#&gt;  8        3    -1 O             -1          3        7 た         動詞接尾辞  </span>
-<span class="co">#&gt;  9        3    -1 O             -1          3        8 の         終助詞      </span>
-<span class="co">#&gt; 10        3    -1 O             -1          3        9 。         句点        </span>
-<span class="co">#&gt; 11        3    -1 O             -1          3       10 』         括弧</span></code></pre></div>
+<span class="fu">conifer</span><span class="fu">::</span><span class="fu"><a href="../reference/pretty_chunks.html">pretty_chunks</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 11 x 10</span>
+<span class="co">#&gt;    chunk_id  head dep   chunk_head chunk_func token_id form       pos   features</span>
+<span class="co">#&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;int&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   </span>
+<span class="co">#&gt;  1        0     3 D              3          1        0 『         括弧  開括弧  </span>
+<span class="co">#&gt;  2        0     3 D              3          1        1 それなら   接続~ &lt;NA&gt;    </span>
+<span class="co">#&gt;  3        1     3 D              3          0        2 なぜ       連用~ &lt;NA&gt;    </span>
+<span class="co">#&gt;  4        2     3 D              3          1        3 クラムボン 名詞  &lt;NA&gt;    </span>
+<span class="co">#&gt;  5        2     3 D              3          1        4 は         連用~ &lt;NA&gt;    </span>
+<span class="co">#&gt;  6        3    -1 O             -1          3        5 わら       動詞~ W       </span>
+<span class="co">#&gt;  7        3    -1 O             -1          3        6 っ         動詞~ &lt;NA&gt;    </span>
+<span class="co">#&gt;  8        3    -1 O             -1          3        7 た         動詞~ 終止    </span>
+<span class="co">#&gt;  9        3    -1 O             -1          3        8 の         終助~ &lt;NA&gt;    </span>
+<span class="co">#&gt; 10        3    -1 O             -1          3        9 。         句点  &lt;NA&gt;    </span>
+<span class="co">#&gt; 11        3    -1 O             -1          3       10 』         括弧  閉括弧  </span>
+<span class="co">#&gt; # ... with 1 more variable: attributes &lt;chr&gt;</span></code></pre></div>
 </div>
 <div id="named-entity-extraction" class="section level3">
 <h3 class="hasAnchor">

@@ -17,6 +17,9 @@ reference:
         - remove_filler
         - detect_misrecognition
         - sentiment
+    - title: "Misc"
+      contents:
+        - pretty_chunks
     - title: "Dataset"
       contents:
         - yamanashi

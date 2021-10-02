@@ -14,10 +14,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-stopifnot(
-  require(magrittr),
-  require(conifer)
-)
+require(magrittr)
+require(conifer)
 ```
 
 ## Usage of COTOHA API client
@@ -40,25 +38,7 @@ data(yamanashi)
 
 ```{r}
 res <- client$parse(yamanashi[13])
-res %>% purrr::map_dfr(function(chunk){
-    tokens <- purrr::map_dfr(chunk$tokens,
-        ~ tibble::tibble(
-          token_id = .$id,
-          form = .$form,
-          pos = .$pos
-        )
-    )
-    chunk_info <- tibble::tibble(
-      chunk_id = rep(chunk$chunk_info$id, nrow(tokens)),
-      head = rep(chunk$chunk_info$head, nrow(tokens)),
-      dep = rep(chunk$chunk_info$dep, nrow(tokens)),
-      chunk_head = rep(chunk$chunk_info$head, nrow(tokens)),
-      chunk_func = rep(chunk$chunk_info$chunk_func, nrow(tokens)),
-    )
-    return(
-      dplyr::bind_cols(chunk_info, tokens)
-    )
-})
+conifer::pretty_chunks(res)
 ```
 
 ### Named entity extraction

@@ -2,10 +2,5 @@
 
 export(cotoha)
 export(getAccessToken)
-import(R6)
-importFrom(dplyr,case_when)
-importFrom(httr,POST)
-importFrom(httr,add_headers)
-importFrom(httr,content)
-importFrom(httr,verbose)
-importFrom(rlang,arg_match)
+export(pretty_chunks)
+import(dplyr)

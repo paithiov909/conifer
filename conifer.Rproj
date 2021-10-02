@@ -6,7 +6,7 @@ AlwaysSaveHistory: Default
 
 EnableCodeIndexing: Yes
 UseSpacesForTab: Yes
-NumSpacesForTab: 4
+NumSpacesForTab: 2
 Encoding: UTF-8
 
 RnwWeave: Sweave
@@ -17,6 +17,8 @@ StripTrailingWhitespace: Yes
 
 BuildType: Package
 PackageUseDevtools: Yes
-PackageInstallArgs: --no-multiarch --with-keep.source
+PackageInstallArgs: --no-multiarch
 PackageBuildArgs: --no-build-vignettes --no-manual
-PackageCheckArgs: --no-build-vignettes
+PackageCheckArgs: --no-multiarch --no-manual --as-cran
+
+QuitChildProcessesOnExit: Yes

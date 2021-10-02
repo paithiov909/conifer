@@ -295,3 +295,7 @@ getAccessToken <- function(publish_url,
     return(invisible(res))
   }
 }
+
+#' @aliases getAccessToken
+#' @noRd
+get_accesstoken <- getAccessToken
