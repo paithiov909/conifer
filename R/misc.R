@@ -1,4 +1,4 @@
-#' Preffy Parsed Chunks
+#' Prettify Parsed Chunks
 #'
 #' @param li List. Output of \code{client$parse()}.
 #' @return tibble.

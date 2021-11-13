@@ -2,7 +2,7 @@
 % Please edit documentation in R/misc.R
 \name{pretty_chunks}
 \alias{pretty_chunks}
-\title{Preffy Parsed Chunks}
+\title{Prettify Parsed Chunks}
 \usage{
 pretty_chunks(li)
 }
@@ -13,5 +13,5 @@ pretty_chunks(li)
 tibble.
 }
 \description{
-Preffy Parsed Chunks
+Prettify Parsed Chunks
 }
